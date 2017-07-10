@@ -1,7 +1,6 @@
 #------------------------------------------------------
 #
-# Example of using the doc2vec wrapper in a
-# complicated pipeline
+# Example of using the doc2vec wrapper in a  pipeline
 #   this uses:
 #       - python 2.7
 #       - sklearn 0.18.1
@@ -81,14 +80,16 @@ def my_tokeniser(text):
 
 # Define a pipeline
 model = Pipeline([
-    ('docs', Doc2VecTransformer(min_count=5, 
-								size=50, 
-								tokeniser=my_tokeniser,
-								iter=15)
+    ('docs', Doc2VecTransformer(
+                min_count=5, 
+                size=50, 
+                tokeniser=my_tokeniser,
+                iter=15)
 	),
-    ('xgb', XGBClassifier(max_depth=6,
-                          seed=42,
-                          n_estimators=100)
+    ('xgb', XGBClassifier(
+                max_depth=6,
+                seed=42,
+                n_estimators=100)
     ),
 ])
 
