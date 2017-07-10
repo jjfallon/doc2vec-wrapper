@@ -29,24 +29,24 @@ class Doc2VecTransformer(BaseEstimator, TransformerMixin):
 
     def default_tokeniser(self, text):
         ''' Basic tokeniser to use as a default '''
-		return re.findall(r"\S+", text)
+        return re.findall(r"\S+", text)
 
     def labeller_id(self, ID, text):
         ''' Converts data to the TaggedDocument format gensim expects '''
-		return TaggedDocument(self.tokeniser(text), [ID])
+        return TaggedDocument(self.tokeniser(text), [ID])
 
     def __init__(self, size=100, seed=1, min_count=5, window=5, iter=5, tokeniser='auto'):
         ''' Initialise variables and select tokeniser '''
-		self.size = size
-		self.seed = seed
-		self.min_count = min_count
-		self.window = window
-		self.iter = iter
+        self.size = size
+        self.seed = seed
+        self.min_count = min_count
+        self.window = window
+        self.iter = iter
 
-		if( tokeniser == 'auto'):
-			self.tokeniser = self.default_tokeniser
-		else:
-			self.tokeniser = tokeniser
+        if( tokeniser == 'auto'):
+            self.tokeniser = self.default_tokeniser
+        else:
+            self.tokeniser = tokeniser
 
     def fit(self, X, y=None):
         ''' Fit the doc2vec model '''
